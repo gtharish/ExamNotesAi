@@ -24,7 +24,7 @@ export default function Auth() {
       const name = User.displayName;
       const email = User.email;
       const result = await axios.post(
-       ServerUrl + "api/auth/login",
+       ServerUrl + "/api/auth/login",
         { name, email },
         {
           withCredentials: true,

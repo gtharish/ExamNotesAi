@@ -14,8 +14,6 @@ import { stripeWebhook } from "./controller/paymentController.js"
 dotenv.config({});
 
 const app = express();
-app.use(express.json());
-app.use(express.urlencoded({extended:true}))
 app.use(cookieParser());
 app.use(cors({
     origin:process.env.CLIENT_URL,
@@ -26,6 +24,9 @@ app.post("/api/credit/webhook",
     express.raw({type:"application/json"}),
     stripeWebhook
 )
+
+app.use(express.json());
+app.use(express.urlencoded({extended:true}))
 
 const PORT = process.env.PORT;
 

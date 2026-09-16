@@ -113,7 +113,7 @@ export default function History() {
 
     try {
       // TODO: Call your backend delete endpoint:
-     await axios.delete(`http://localhost:5000/api/note/history/${id}`, { withCredentials: true });
+     await axios.delete(`${ServerUrl}/api/note/history/${id}`, { withCredentials: true });
      
       // Optimistic UI update:
       setHistoryList((prev) => prev.filter((item) => item._id !== id && item._id !== null));

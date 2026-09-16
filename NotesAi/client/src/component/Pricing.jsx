@@ -111,7 +111,7 @@ export default function Pricing() {
     try {
       setProcessingPlanId(plan.id);
 
-      const response = await axios.post(ServerUrl + `api/credit/orders`, {
+      const response = await axios.post(ServerUrl + "/api/credit/orders", {
         planId: plan.id,
         amount: plan.price,
         credits: plan.credits,

@@ -6,6 +6,7 @@ import FinalResult from "./FinalResult";
 import { useDispatch, useSelector } from "react-redux";
 import logo from "../assets/logo.png";
 import axios from "axios";
+import { ServerUrl } from "../App.jsx";
 
 export default function NoteView() {
   const { id } = useParams();
@@ -30,7 +31,7 @@ export default function NoteView() {
       setError("");
 
       try {
-        const response = await axios.get(`http://localhost:5000/api/note/${id}`, {
+        const response = await axios.get(`${ServerUrl}/api/note/${id}`, {
           withCredentials: true,
         });
         const note = response.data?.note;

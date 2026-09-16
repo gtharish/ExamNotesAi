@@ -21,7 +21,7 @@ export const getCurrentUser = async (dispatch) => {
 
 export const generateNotes = async (payload) => {
     try {
-        const result = await axios.post(ServerUrl + "api/note/generate-note", (payload), {
+        const result = await axios.post(ServerUrl + "/api/note/generate-note", payload, {
             withCredentials: true
         })
        
@@ -34,7 +34,7 @@ export const generateNotes = async (payload) => {
 export const downloadPdf = async (result) => {
     try {
         const response = await axios.post(
-            ServerUrl + "api/pdf/generate-pdf",
+            ServerUrl + "/api/pdf/generate-pdf",
             { result },
             {
                 responseType: "blob",
