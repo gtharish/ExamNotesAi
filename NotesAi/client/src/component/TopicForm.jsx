@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { generateNotes } from "../services/api";
 import { useSelector,useDispatch } from "react-redux";
 import { setUserData, setCredits } from "../redux/userSlice.js";
+import e from "express";
 
 function TopicForm({ loading, setResult, setLoading, setError }) {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ function TopicForm({ loading, setResult, setLoading, setError }) {
         includeDiagram,
         revisionMode,
       });
-
+      if(result === null) throw new e("result is not generated");
       console.log(result.creditLeft);
       dispatch(setCredits(result.creditLeft))
       const generatedResult = result?.data?.content ?? result?.data;

@@ -12,7 +12,7 @@ import NoteView from "./component/NoteView.jsx";
 import PaymentSuccess from "./component/PaymentSuccess.jsx";
 import PaymentFailed from "./component/PaymentFailed.jsx";
 
-export const ServerUrl = "http://localhost:5000/"
+export const ServerUrl = import.meta.env.VITE_SERVER_URL
 
  function App () {
 
