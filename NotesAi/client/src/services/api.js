@@ -5,7 +5,7 @@ import { ServerUrl } from "../App.jsx";
 
 export const getCurrentUser = async (dispatch) => {
     try {
-        const result = await axios.get(ServerUrl + "api/auth/getUser", {
+        const result = await axios.get(ServerUrl + "/api/auth/getUser", {
             withCredentials: true
         })
 

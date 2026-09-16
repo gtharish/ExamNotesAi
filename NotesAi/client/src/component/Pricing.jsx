@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios"; // Uncomment when connecting to backend
-// import { ServerUrl } from "../App.jsx"; // Uncomment when connecting to backend
+import { ServerUrl } from "../App.jsx"; // Uncomment when connecting to backend
 import logo from "../assets/logo.png";
 import Footer from "./Footer";
 
@@ -111,7 +111,7 @@ export default function Pricing() {
     try {
       setProcessingPlanId(plan.id);
 
-      const response = await axios.post(`http://localhost:5000/api/credit/orders`, {
+      const response = await axios.post(ServerUrl + `api/credit/orders`, {
         planId: plan.id,
         amount: plan.price,
         credits: plan.credits,

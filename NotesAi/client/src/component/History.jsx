@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import axios from "axios"; // Uncomment when connecting to backend
-// import { ServerUrl } from "../App.jsx"; // Uncomment when connecting to backend
+import { ServerUrl } from "../App.jsx"; // Uncomment when connecting to backend
 import { downloadPdf } from "../services/api";
 import logo from "../assets/logo.png";
 import Footer from "./Footer";
@@ -80,7 +80,7 @@ export default function History() {
     const fetchHistoryFromDB = async () => {
       try {
         _setLoading(true);
-        const response = await axios.get("http://localhost:5000/api/note/history", {
+        const response = await axios.get(ServerUrl +"/api/note/history", {
           withCredentials: true,
         });
 
