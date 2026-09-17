@@ -3,12 +3,11 @@ import { motion, AnimatePresence } from "motion/react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {Logout} from "../redux/userSlice";
+import { serverUrl } from "../config/server.js";
 import logo from "../assets/logo.png";
 import axios from "axios";
 
 function Navbar() {
-    const ServerUrl = import.meta.env.VITE_SERVER_URL
-
   const userData = useSelector((state) => state.user);
   const user = userData.userData;
   const dispatch = useDispatch();
@@ -29,7 +28,7 @@ function Navbar() {
 
   const handleLogout = async (e) => {
     const result = await axios.get(
-      ServerUrl + "/api/auth/logout",
+      serverUrl("/api/auth/logout"),
       {
         withCredentials: true,
       }
@@ -80,8 +79,8 @@ function Navbar() {
       }}
       className="
         sticky top-4 z-50
-        max-w-6xl mx-auto
-        px-4 sm:px-6
+        w-full max-w-6xl mx-auto
+        px-2 sm:px-6
       "
     >
       <div
@@ -92,8 +91,9 @@ function Navbar() {
           backdrop-blur-xl
           border border-white/10
           shadow-[0_16px_40px_rgba(0,0,0,0.35)]
-          px-5 sm:px-7 py-3.5
+          px-3 sm:px-7 py-3.5
           flex items-center justify-between
+          gap-2
         "
       >
         {/* LEFT SIDE - BRAND */}
@@ -134,6 +134,7 @@ function Navbar() {
           <div className="flex items-center gap-1.5">
             <span
               className="
+                hidden sm:inline
                 text-base sm:text-lg
                 font-bold
                 text-white
@@ -166,7 +167,7 @@ function Navbar() {
         <div
           className="
             flex items-center
-            gap-3 sm:gap-4
+            gap-2 sm:gap-4
             relative z-50
           "
         >
@@ -209,7 +210,7 @@ function Navbar() {
                 {credits}
               </span>
 
-              <span className="text-xs text-neutral-400 hidden xs:inline">
+              <span className="hidden sm:inline text-xs text-neutral-400">
                 credits
               </span>
 

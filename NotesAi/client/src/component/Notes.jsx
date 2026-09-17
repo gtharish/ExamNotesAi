@@ -191,7 +191,7 @@ function Notes() {
             {/* MAIN STUDY DOCUMENT AREA */}
             <main
               className="
-                w-full lg:col-span-3
+                min-w-0 w-full lg:col-span-3
                 rounded-3xl
                 bg-white
                 border border-neutral-200/80

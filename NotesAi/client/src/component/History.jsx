@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import axios from "axios"; // Uncomment when connecting to backend
-import { ServerUrl } from "../App.jsx"; // Uncomment when connecting to backend
+import { serverUrl } from "../config/server.js";
 import { downloadPdf } from "../services/api";
 import logo from "../assets/logo.png";
 import Footer from "./Footer";
@@ -80,7 +80,7 @@ export default function History() {
     const fetchHistoryFromDB = async () => {
       try {
         _setLoading(true);
-        const response = await axios.get(ServerUrl +"/api/note/history", {
+        const response = await axios.get(serverUrl("/api/note/history"), {
           withCredentials: true,
         });
 
@@ -113,7 +113,7 @@ export default function History() {
 
     try {
       // TODO: Call your backend delete endpoint:
-     await axios.delete(`${ServerUrl}/api/note/history/${id}`, { withCredentials: true });
+     await axios.delete(serverUrl(`/api/note/history/${id}`), { withCredentials: true });
      
       // Optimistic UI update:
       setHistoryList((prev) => prev.filter((item) => item._id !== id && item._id !== null));
@@ -279,7 +279,7 @@ export default function History() {
           </div>
 
           {/* Filter Tabs */}
-          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-white border border-neutral-200/80 shadow-xs self-start sm:self-auto">
+          <div className="w-full sm:w-auto flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-white border border-neutral-200/80 shadow-xs self-start sm:self-auto">
             <FilterTab
               label="All Notes"
               count={historyList.length}

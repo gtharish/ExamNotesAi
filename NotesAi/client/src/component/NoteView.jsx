@@ -6,7 +6,7 @@ import FinalResult from "./FinalResult";
 import { useDispatch, useSelector } from "react-redux";
 import logo from "../assets/logo.png";
 import axios from "axios";
-import { ServerUrl } from "../App.jsx";
+import { serverUrl } from "../config/server.js";
 
 export default function NoteView() {
   const { id } = useParams();
@@ -31,7 +31,7 @@ export default function NoteView() {
       setError("");
 
       try {
-        const response = await axios.get(`${ServerUrl}/api/note/${id}`, {
+        const response = await axios.get(serverUrl(`/api/note/${id}`), {
           withCredentials: true,
         });
         const note = response.data?.note;
@@ -241,7 +241,7 @@ export default function NoteView() {
             {/* MAIN STUDY DOCUMENT AREA */}
             <main
               className="
-                w-full lg:col-span-3
+                min-w-0 w-full lg:col-span-3
                 rounded-3xl
                 bg-white
                 border border-neutral-200/80

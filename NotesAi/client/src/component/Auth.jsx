@@ -8,10 +8,9 @@ import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../utils/firebase";
 import { setUserData, setAuthenticated, setCredits } from "../redux/userSlice.js";
 import logo from "../assets/logo.png";
+import { serverUrl } from "../config/server.js";
 
 export default function Auth() {
-  const ServerUrl = import.meta.env.VITE_SERVER_URL
-  
   const Navigate = useNavigate();
   const dispatch = useDispatch();
  
@@ -24,7 +23,7 @@ export default function Auth() {
       const name = User.displayName;
       const email = User.email;
       const result = await axios.post(
-       ServerUrl + "/api/auth/login",
+       serverUrl("/api/auth/login"),
         { name, email },
         {
           withCredentials: true,
@@ -50,7 +49,7 @@ export default function Auth() {
         initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="max-w-6xl mx-auto rounded-2xl bg-neutral-950 border border-neutral-800 px-6 py-4 shadow-[0_16px_36px_rgba(0,0,0,0.2)] flex items-center justify-between"
+        className="max-w-6xl mx-auto rounded-2xl bg-neutral-950 border border-neutral-800 px-4 sm:px-6 py-4 shadow-[0_16px_36px_rgba(0,0,0,0.2)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3"
       >
         <Link to="/" className="flex items-center gap-3 group">
           <img
@@ -75,7 +74,7 @@ export default function Auth() {
 
         <Link
           to="/"
-          className="text-xs font-semibold text-neutral-300 hover:text-white transition-colors"
+          className="text-xs font-semibold text-neutral-300 hover:text-white transition-colors self-end sm:self-auto"
         >
           Back to Home →
         </Link>

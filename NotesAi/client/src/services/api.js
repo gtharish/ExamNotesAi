@@ -1,11 +1,11 @@
 import axios from "axios"
 
 import { setAuthenticated, setCredits, setUserData } from "../redux/userSlice.js";
-import { ServerUrl } from "../App.jsx";
+import { serverUrl } from "../config/server.js";
 
 export const getCurrentUser = async (dispatch) => {
     try {
-        const result = await axios.get(ServerUrl + "/api/auth/getUser", {
+        const result = await axios.get(serverUrl("/api/auth/getUser"), {
             withCredentials: true
         })
 
@@ -21,7 +21,7 @@ export const getCurrentUser = async (dispatch) => {
 
 export const generateNotes = async (payload) => {
     try {
-        const result = await axios.post(ServerUrl + "/api/note/generate-note", payload, {
+        const result = await axios.post(serverUrl("/api/note/generate-note"), payload, {
             withCredentials: true
         })
        
@@ -34,7 +34,7 @@ export const generateNotes = async (payload) => {
 export const downloadPdf = async (result) => {
     try {
         const response = await axios.post(
-            ServerUrl + "/api/pdf/generate-pdf",
+            serverUrl("/api/pdf/generate-pdf"),
             { result },
             {
                 responseType: "blob",

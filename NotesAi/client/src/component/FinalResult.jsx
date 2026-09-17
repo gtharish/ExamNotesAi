@@ -24,7 +24,7 @@ function FinalResult({ result }) {
   };
 
   return (
-    <div className="space-y-10 text-neutral-900">
+    <div className="min-w-0 space-y-10 text-neutral-900">
       {/* ================= STICKY / FLOATING ACTION HEADER ================= */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-6 border-b border-neutral-100">
         <div>
@@ -119,7 +119,7 @@ function FinalResult({ result }) {
         <section className="space-y-4">
           <SectionHeader icon="📚" title="Detailed Notes" badge="Comprehensive Material" />
 
-          <div className="rounded-2xl border border-neutral-200/80 bg-neutral-50/30 p-6 sm:p-8">
+          <div className="min-w-0 rounded-2xl border border-neutral-200/80 bg-neutral-50/30 p-4 sm:p-8">
             <div className="prose prose-neutral max-w-none text-neutral-800 text-sm sm:text-base leading-relaxed space-y-4">
               <ReactMarkdown
                 components={{
