@@ -13,7 +13,7 @@ const userSlice =  createSlice({
             state.userData = action.payload
         },
         setAuthenticated:(state,action)=>{
-            state.isCredential = action.payload
+            state.isAuthenticated = action.payload
         },
         Logout :(state,action)=>{
            state.userData = null,
