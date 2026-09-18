@@ -38,7 +38,7 @@ function TopicForm({ loading, setResult, setLoading, setError }) {
         includeDiagram,
         revisionMode,
       });
-      if(result === null) throw new e("result is not generated");
+      if(!result) throw new Error("result is not generated");
       console.log(result.creditLeft);
       dispatch(setCredits(result.creditLeft))
       const generatedResult = result?.data?.content ?? result?.data;
